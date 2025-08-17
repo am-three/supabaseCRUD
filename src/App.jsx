@@ -85,33 +85,50 @@ function App() {
 
   return (
 
-    <div>
+    <div className='bg-gray-700 text-white p-10 rounded-lg'>
 
       {" "}
 
-      <h1> To Do List </h1>
+      <h1 className='text-2xl font-bold mb-10'>
+        To Do List
+      </h1>
 
-      <div>
+      <div className=''>
 
-        <input
-          type='text'
-          placeholder='To Do'
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)} />
+        <div className='flex gap-10 mb-10'>
+          <input
+            type='text'
+            placeholder='To Do'
+            value={newTodo}
+            onChange={(e) => setNewTodo(e.target.value)}
+            className='border rounded p-3 outline-none'
+          />
 
-        <button onClick={addTodo} > Add to do item </button>
+          <button onClick={addTodo}>
+
+            Add to do item
+
+          </button>
+
+        </div>
 
         <ul>
 
           {todoList.map((todo) => (
             <li key={todo.id}>
-              <p> {todo.name} </p>
 
-              <button onClick={() => completeTask(todo.id, todo.isCompleted)} >
-                {todo.isCompleted ? 'Undo' : 'Complete Task'}
-              </button>
+              <div className='py-5'>
+                <p> {todo.name} </p>
+              </div>
 
-              <button onClick={() => deleteTask(todo.id)}> Delete Task </button>
+              <div className='flex items-center justify-center gap-3 '>
+                <button onClick={() => completeTask(todo.id, todo.isCompleted)} >
+                  {todo.isCompleted ? 'Undo' : 'Complete Task'}
+                </button>
+
+                <button onClick={() => deleteTask(todo.id)}> Delete Task </button>
+              </div>
+
             </li>
           ))}
 
