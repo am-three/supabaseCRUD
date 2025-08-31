@@ -28,6 +28,7 @@ function App() {
 
   // 'add to do' button
   const addTodo = async () => {
+    if (!newTodo.trim()) return;
 
     const newTodoData = {
       name: newTodo,
@@ -36,6 +37,7 @@ function App() {
     const { data, error } = await supabase
       .from('TodoList')
       .insert([newTodoData])
+      .select()
       .single();
 
     if (error) {
